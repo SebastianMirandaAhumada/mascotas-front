@@ -1,0 +1,107 @@
+
+
+<!-- Botón para agregar una nueva mascota -->
+<div class="mx-3 d-flex justify-content-end">
+    <button class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#agregarMascota" onclick="agregarMascota()">Agregar Laboratorio</button>
+</div>
+
+<!-- Tabla de mascotas -->
+
+    <h2 class="mb-4 text-center">Laboratorios Externos</h2>
+  
+    <div class="table-responsive">
+      <table class="table  table-hover">
+        <thead class="table-success">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+
+            <th scope="col">Rut Dueño</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mascota of mascotas">
+            <th scope="row">{{ mascota.id }}</th>
+            <td>{{ mascota.nombre }}</td>
+
+            <td>{{ mascota.rutDuenio }}</td>
+            <td>
+                <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn btn-warning btn-sm me-2" (click)="editarMascota(mascota.id)">Editar</button>
+                <button class="btn btn-danger btn-sm" (click)="eliminarMascota(mascota.id)">Eliminar</button>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Mascota</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="mascotaForm">
+              <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Raza</label>
+                <input type="text" class="form-control" formControlName="raza">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Peso</label>
+                <input type="number" class="form-control" formControlName="peso">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Rut Dueño</label>
+                <input type="text" class="form-control" formControlName="rutDuenio">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="guardarCambios()">Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="agregarMascota" tabindex="-1" aria-labelledby="agregarMascotaLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="agregarMascotaLabel">Agregar Mascota</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="mascotaForm">
+              <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Raza</label>
+                <input type="text" class="form-control" formControlName="raza">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Peso</label>
+                <input type="number" class="form-control" formControlName="peso">
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Rut Dueño</label>
+                <input type="text" class="form-control" formControlName="rutDuenio">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="agregarCambios()">Guardar cambios</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
